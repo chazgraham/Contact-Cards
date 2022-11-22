@@ -16,6 +16,7 @@ import { initdb } from './database';
 import { getDb } from './database';
 import { postDb } from './database';
 import { fetchCards } from './cards';
+import { deleteDb } from './database';
 
 window.addEventListener('load', function () {
     initdb();
@@ -60,3 +61,12 @@ form.addEventListener('submit', event => {
     // Reload the DOM
     fetchCards();
 });
+
+window.deleteCard = (e) => {
+    // Grabs the id from the button element attached to the contact card.
+    let id = parseInt(e.id);
+    // Delete the card
+    deleteDb(id);
+    // Reload the DOM
+    fetchCards();
+};
